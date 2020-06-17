@@ -1,14 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
+#include "myLib\fnc.h"
 
-int two(int n);
 char *my_readline(void);
-int my_strlen(char* s);
 char* assertOperation(char* operation);
-char* my_strchr(char* string_to_search, int char_to_search);
 
 int main(int argc, char *argv[]) {
     
@@ -117,20 +113,4 @@ char* assertOperation(char* operation) {
     }
 }
 
-char* my_strchr(char* string_to_search, int char_to_search) {
-    for (int i = 0; i < my_strlen(string_to_search); i++) {
-        if (string_to_search[i] == char_to_search) {
-            char* first_occurence = &string_to_search[i];
-            return first_occurence;
-        }
-    }
-    return NULL;
-}
 
-int my_strlen(char* s) {
-    int i = 0;
-    while (s[i] != '\0') {
-        i++;
-    }
-    return i;
-}
