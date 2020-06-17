@@ -6,12 +6,17 @@
 
 int two(int n);
 char *my_readline(void);
+int my_strlen(char* s);
 char* assertOperation(char* operation);
+char* my_strchr(char* string_to_search, int char_to_search);
 
 int main(int argc, char *argv[]) {
     
     // test sur pointeur
+    // char* s = "hello world";
 
+    // char* res = my_strchr(s, ' ');
+    // printf("%s", res);
     // int taille = 198;
     // printf("%d", &taille);
     // printf("\n");
@@ -38,7 +43,7 @@ int main(int argc, char *argv[]) {
     char* line;
     line = malloc(sizeof(*line) * 100);
     while (line = my_readline()) {
-        // printf("%s\n", assertOperation(line));
+        printf("%s\n", assertOperation(line));
         assertOperation(line);
     }
     // char *b;
@@ -103,11 +108,29 @@ char *my_readline(void)
 }
 
 char* assertOperation(char* operation) {
-    if(operation[strlen(operation) - 1] == 'D') {
+    if(operation[my_strlen(operation) - 1] == 'D') {
         return "delete";
-    } else if (strchr(operation, ' ') != NULL) {
+    } else if (my_strchr(operation, ' ') != NULL) {
         return "add";
     } else {
         return "search";
     }
+}
+
+char* my_strchr(char* string_to_search, int char_to_search) {
+    for (int i = 0; i < my_strlen(string_to_search); i++) {
+        if (string_to_search[i] == char_to_search) {
+            char* first_occurence = &string_to_search[i];
+            return first_occurence;
+        }
+    }
+    return NULL;
+}
+
+int my_strlen(char* s) {
+    int i = 0;
+    while (s[i] != '\0') {
+        i++;
+    }
+    return i;
 }

@@ -1,0 +1,12 @@
+int *memoireAllouee = creation d'un pointeur (contenant une adresse)
+
+&memoireAllouee = adresse du pointeur (//////de la variable//)
+memoireAllouee = adresse de l'objet
+*memoireAllouee = valeur de l'objet
+
+int voilure = creation d'une variable (contenant une valeur)
+
+&voilure = adresse de la variable
+voilure = valeur de la variable
+*voilure = dereferencement avec la valeur de la variable (qui ne mène probablement à rien, car il est peut
+probable que c'est égale à la valer d'une adresse).
