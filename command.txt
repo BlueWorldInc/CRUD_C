@@ -1,0 +1,2 @@
+gcc .\my_crud.c .\myLib\fnc.c .\myLib\crd.c
+Get-Content .\small-commands.lst | .\a.exe

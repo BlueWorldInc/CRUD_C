@@ -1,116 +1,115 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "myLib\fnc.h"
+#include "myLib\crd.h"
 
-char *my_readline(void);
-char* assertOperation(char* operation);
+struct key_value_pair {
+    char* key;
+    char* value;
+};
+
+struct kvp_holder {
+    char* a;
+    struct key_value_pair k;
+};
+
+char* my_substr(char* str, int startIndex, int endIndex);
+char* getKey(char* line);
+int my_strcmp(char* s0, char* s1);
+char* getValue(char* line);
+
+
 
 int main(int argc, char *argv[]) {
     
-    // test sur pointeur
-    // char* s = "hello world";
 
-    // char* res = my_strchr(s, ' ');
-    // printf("%s", res);
-    // int taille = 198;
-    // printf("%d", &taille);
-    // printf("\n");
-    // int* voilure = &taille; // je veut un pointeur, donc l'adresse, d'un int
-    // void* voilur = &taille; // je veut un pointeur, donc l'adresse, d'un type quelquonque // probablement aussi efficace car la taille d'une adresse ne varie pas en fonction du type referencer (sous jacent), enfin je croit.
-    // int* ferari = (int*) 6422012;
-    // printf("a%da", *ferari);
-    // printf("%d", *voilure);
-    // char *prenom = "Albert";
-    // printf("\n%s", prenom);
-
-
-    // int t = two(6);
-    // char *a = my_readline();
-    // char *b = my_readline();
-    // my_readline();
-    // while (my_readline()) {
-        
-    // }
-    // printf("%s", assertOperation("a"));
-    // printf("%s\n", assertOperation(my_readline()));
-    // printf("%s\n", assertOperation(my_readline()));
-    // printf("%s\n", assertOperation(my_readline()));
+    struct key_value_pair kvp0;
+    struct key_value_pair kvp1;
+    struct key_value_pair kvp2;
+    struct kvp_holder kvph;
+    kvp0.key = "all";
+    kvp1.key = "alla";
+    kvp2.key = "allz";
+    kvp0.value = "vultura";
+    kvp1.value = "vulture";
+    kvp2.value = "vulturd";
+    kvph.k = kvp1;
+    kvph.a = "aaas";
+    // kvph.k[1] = kvp1;
+    // kvph.k[2] = kvp2;
     char* line;
+    printf("%s\n", kvph.a);
+    printf("%s\n", kvph.k.key);
+    // printf("%s\n", kvph.k[2].key);
+    // printf("%s\n", kvph.k[0].value);
+    // printf("%s\n", kvph.k[1].value);
+    // printf("%s\n", kvph.k[2].value);
     line = malloc(sizeof(*line) * 100);
-    while (line = my_readline()) {
-        printf("%s\n", assertOperation(line));
-        assertOperation(line);
-    }
-    // char *b;
-    // char* z = "hey";
-    // printf("hello world \n%s", a);
-    // printf("char : %d octets\n", sizeof(*b));
-    // printf("int : %d octets\n", sizeof(int));
-    // printf("long : %d octets\n", sizeof(long));
-    // printf("double : %d octets\n", sizeof(double));
+    int line_number = 0;
+    // while (line = my_readline()) {
+    //     // printf("%d %s\n", line_number++, getKey(line));
+    //     // printf("%s\n", assertOperation(line));
+    //     char* current_operation = assertOperation(line);
+    //     if (my_strcmp(current_operation, "add")) {
+    //         printf("%d %s\n", line_number, getValue(line));
+    //     }
+    //     line_number++;
+    // }
     return 0;
 }
 
-int two(int n)
-{
-    return (n * 2);
+// void create(char* value)
+
+int my_strcmp(char* s0, char* s1) {
+    int len = my_strlen(s0);
+    if (len != my_strlen(s1)) {
+        return 0;
+    }
+    for (int i = 0; i < my_strlen(s0); i++) {
+        if (s0[i] != s1[i]) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
-char *my_readline(void)
-{
-    char* chaine = "samit";
-    char *tmp;
-    char *buff;
-    ssize_t size;
-    int i = 0;
-
-    buff = malloc(sizeof(*buff) * (100 + 1));
-    tmp = malloc(sizeof(*tmp) * (1));
-    if (buff == NULL)
-        return NULL;
-
-
-
-    do {
-        read(0, tmp, 1);
-        // printf("%c", tmp[0]);
-        buff[i] = tmp[0];
-        i++;
-    } while (tmp[0] != 10);
-    
-    // buff[i] = '\0';
-    size = i;
-    // for (int i = 0; i < 1; i++) {
-        // read(0, tmp, 1);
-    // }
-    // int l = strlen(*buff);
-    // printf("%s", buff);
-    // if (tmp[0] == 57) {
-        // printf("hey");
-    // } else {
-        // printf("no");
-    // }
-    if (size > 1)
-    {
-        
-        buff[size - 1] = '\0';
-        // printf("\n***%s***\n", buff);
-        // printf("%d", strlen(buff));
-        return buff;
+char* getKey(char* line) {
+    char* key;
+    for (int i = 0; i < my_strlen(line) + 1; i++) {
+        if (line[i] == ' ' || line[i] == '\0') {
+            key = malloc(sizeof(key) * i + 1);
+            key = my_substr(line, 0, i);
+            return key;
+        }
     }
-    free(buff);
     return NULL;
 }
 
-char* assertOperation(char* operation) {
-    if(operation[my_strlen(operation) - 1] == 'D') {
-        return "delete";
-    } else if (my_strchr(operation, ' ') != NULL) {
-        return "add";
-    } else {
-        return "search";
+char* getValue(char* line) {
+    char* value;
+    int len = 0;
+    for (int i = 0; i < my_strlen(line) + 1; i++) {
+        if (line[i] == ' ') {
+            len = my_strlen(line) + 2 - i;
+            value = malloc(sizeof(value) * len + 1);
+            value = my_substr(line, i + 1, len);
+            return value;
+        }
     }
+    return NULL;
 }
+
+char* my_substr(char* str, int startIndex, int endIndex) {
+    if (endIndex <= startIndex || startIndex < 0 || endIndex < 0) {
+        return "";
+    }
+    int len = endIndex - startIndex;
+    char* substr;
+    substr = malloc(sizeof(*substr) * (len + 1));
+    for (int i = 0; i < len; i++) {
+        substr[i] = str[startIndex + i];
+    }
+    substr[len] = '\0';
+    return substr;
+}
+
 
 
