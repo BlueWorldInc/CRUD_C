@@ -1,0 +1,6 @@
+Not this way:
+*last_link.value
+*last_link->value
+This way:
+last_link->value
+(*last_link).value
