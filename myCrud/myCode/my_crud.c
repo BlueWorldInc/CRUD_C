@@ -16,10 +16,12 @@ struct linked_list {
     struct linked_list* next_link;
 };
 
-void print_linked_list(struct linked_list linked_list_start);
+void print_linked_list(struct linked_list* linked_list_start);
 // void add_linked_list(struct linked_list linked_list_start, char* val);
 void add_linked_list(struct linked_list* linked_list_start, char* val);
-struct linked_list create_link(char* val);
+// struct linked_list create_link(char* val);
+// void create_link(struct linked_list* new_link_address, char* val);
+void create_link(struct linked_list** new_link_address, char* val);
 // struct linked_list* get_last_link(struct linked_list linked_list_start);
 void get_last_link(struct linked_list* linked_list_start_address, struct linked_list** last_link_address);
 char* my_substr(char* str, int startIndex, int endIndex);
@@ -43,8 +45,8 @@ int main(int argc, char *argv[]) {
     // add_linked_list(linked_list_start, "68");
     // add_linked_list(linked_list_start, "25");
     // add_linked_list(linked_list_start, "37");
-    // print_linked_list(linked_list_start);
-    printf("a%sa\n", linked_list_start.next_link);
+    // print_linked_list(&linked_list_start);
+    // printf("a%sa\n", linked_list_start.next_link);
     printf("a%pa\n", &linked_list_start);
     // test sur les struct
 
@@ -161,11 +163,59 @@ char* my_substr(char* str, int startIndex, int endIndex) {
 // }
 
 void add_linked_list(struct linked_list* linked_list_start, char* val) {
-    struct linked_list new_link = create_link(val);
-    struct linked_list* last_link = linked_list_start;
-    while((*last_link).next_link != NULL) {
-        last_link = (*last_link).next_link;
+    // struct linked_list new_link0 = create_link("7");
+    // struct linked_list new_link1 = create_link("9");
+    // struct linked_list new_link2 = create_link("34");
+
+
+    struct linked_list* current_link = linked_list_start;
+
+    // printf("a%pa\n", (*current_link).next_link);
+    // (*current_link).next_link = &new_link0;
+    // current_link = (*current_link).next_link;
+    // (*current_link).next_link = &new_link1;
+    // current_link = (*current_link).next_link;
+
+    // current_link = linked_list_start;
+    // printf("a%pa\n", (*current_link).next_link);
+
+    printf("start add link %s\n", val);
+
+    while((*current_link).next_link != NULL) {
+        // printf("c%pc\n", (*current_link).next_link);
+        printf("d%sd\n", (*current_link).value);
+        current_link = (*current_link).next_link;
     }
+    
+    // struct linked_list new_link = create_link(val);
+    struct linked_list* new_link_add = NULL;
+    struct linked_list** new_link_address = &new_link_add;
+    create_link(new_link_address, val);
+    printf("%p\n", *new_link_address);
+    printf("%p\n", new_link_add);
+    printf("mid add link %s\n", val);
+
+
+    printf("d%sd\n", (*current_link).value);
+
+    (*current_link).next_link = new_link_add;
+    printf("e%se\n", (*current_link).value);
+    // (*current_link).next_link = &new_link2;
+    // current_link = (*current_link).next_link;
+
+
+    // printf("q%sq\n", (*linked_list_start).value);
+    // printf("q%sq\n", (*current_link).value);
+
+    // printf("q%sq\n", (*(*(*linked_list_start).next_link).next_link).value);
+
+
+    // struct linked_list new_link = create_link(val);
+    // struct linked_list* last_link = linked_list_start;
+    // while((*last_link).next_link != NULL) {
+    //     printf("e%se\n", (*last_link).value);
+    //     last_link = (*last_link).next_link;
+    // }
     // struct linked_list tmp_link = *last_link;
     // struct linked_list* current_link = tmp_link.next_link;
     // while(current_link != NULL) {
@@ -178,23 +228,51 @@ void add_linked_list(struct linked_list* linked_list_start, char* val) {
         // tmp_link = *last_link;
         // tmp_link.next_link = &new_link;
 
-    (*last_link).next_link = &new_link;
+            // (*last_link).next_link = &new_link;
     
     // printf("a%sa\n", (*last_link).next_link);
     // printf("a%sa\n", linked_list_start.value);
-    printf("a%pa\n", linked_list_start);
+    // printf("a%pa\n", linked_list_start);
     // printf("a%pa\n", last_link);
     // printf("a%pa\n", &tmp_link);
     // printf("a%sa\n", linked_list_start.next_link);
-    printf("////////////////////////////\n");
+    // printf("////////////////////////////\n");
 }
 
 
-struct linked_list create_link(char* val) {
-    struct linked_list new_link;
-    new_link.value = val;
-    new_link.next_link = NULL;
-    return new_link;
+// struct linked_list create_link(char* val) {
+//     struct linked_list new_link;
+//     new_link.value = val;
+//     new_link.next_link = NULL;
+//     return new_link;
+// }
+
+// void create_link(struct linked_list* new_link_address, char* val) {
+//     struct linked_list new_link;
+//     new_link.value = val;
+//     new_link.next_link = NULL;
+//     new_link_address = &new_link;
+//     // return new_link_address;
+// }
+
+// void create_link(struct linked_list** new_link_address, char* val) {
+//     struct linked_list new_link;
+//     new_link.value = val;
+//     new_link.next_link = NULL;
+//     printf("%p\n", &new_link);
+//     *new_link_address = &new_link;
+//     printf("creating new link\n");
+//     // return new_link_address;
+// }
+
+void create_link(struct linked_list** new_link_address, char* val) {
+    struct linked_list* new_link;
+    new_link = malloc(sizeof(*new_link) * 1);
+    // struct linked_list new_link;
+    new_link[0].value = val;
+    new_link[0].next_link = NULL;
+    *new_link_address = &new_link[0];
+
 }
 
 // struct linked_list* get_last_link(struct linked_list linked_list_start) {
@@ -230,16 +308,27 @@ void get_last_link(struct linked_list* linked_list_start_address, struct linked_
     printf("b%pb\n", &linked_list_start);
 }
 
-void print_linked_list(struct linked_list linked_list_start) {
-    struct linked_list* last_link;
-    struct linked_list* current_link;
-    struct linked_list tmp_link;
-    last_link = &linked_list_start;
-    current_link = linked_list_start.next_link;
-    while (current_link != NULL) {
-        tmp_link = *current_link;
-        last_link = current_link;
-        printf("%s\n", tmp_link.value);
-        current_link = tmp_link.next_link;
+// void print_linked_list(struct linked_list linked_list_start) {
+//     struct linked_list* last_link;
+//     struct linked_list* current_link;
+//     struct linked_list tmp_link;
+//     last_link = &linked_list_start;
+//     current_link = linked_list_start.next_link;
+//     while (current_link != NULL) {
+//         tmp_link = *current_link;
+//         last_link = current_link;
+//         printf("%s\n", tmp_link.value);
+//         current_link = tmp_link.next_link;
+//     }
+// }
+
+void print_linked_list(struct linked_list* linked_list_start) {
+    struct linked_list* current_link = linked_list_start;
+    printf("start\n");
+    while((*current_link).next_link != NULL) {
+        printf("%s", (*current_link).value);
+        printf("z%pz\n", (*current_link).next_link);
+        current_link = (*current_link).next_link;
     }
+    printf("end\n");
 }
