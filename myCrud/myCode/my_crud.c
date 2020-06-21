@@ -1,5 +1,6 @@
 #include "myLib\fnc.h"
 #include "myLib\crd.h"
+#include <time.h>
 
 struct key_value_pair {
     char* key;
@@ -44,8 +45,8 @@ char* getValue(char* line);
 
 
 int main(int argc, char *argv[]) {
-    printf("start\n");
-    
+    // printf("start\n");
+    clock_t begin = clock();
     struct linked_list linked_list_start;
     linked_list_start.key = "-1";
     struct linked_list* linked_list_first = &linked_list_start;
@@ -156,7 +157,10 @@ int main(int argc, char *argv[]) {
         }
         // line_number++;
     }
-    printf("end\n");
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    // printf("end\n");
+    printf("Time taken: %lf seconds", time_spent);
     return 0;
 }
 
