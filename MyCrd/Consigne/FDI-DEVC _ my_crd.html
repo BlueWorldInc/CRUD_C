@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>FDI-DEVC / my_crd</title>
+	<link rel="stylesheet" href="FDI-DEVC%20_%20my_crd_fichiers/font-awesome.css">
+	<link rel="stylesheet" href="FDI-DEVC%20_%20my_crd_fichiers/prism.css">
+	<link rel="stylesheet" href="FDI-DEVC%20_%20my_crd_fichiers/sujet.css">
+	<script type="text/javascript" src="FDI-DEVC%20_%20my_crd_fichiers/prism.js"></script><script src="FDI-DEVC%20_%20my_crd_fichiers/clipboard.js"></script>
+</head>
+<body>
+	<div id="header" class="panel panel-heading">
+		<div id="logo">
+			<img src="FDI-DEVC%20_%20my_crd_fichiers/logo.png">
+		</div>
+		<div id="title">FDI-DEVC / my_crd</div>
+		<div></div>
+	</div>
+	<div class="panel panel-module">
+		<div class="panel-heading">Paramètres</div>
+		<div class="panel-body">
+			<table>
+				<tbody><tr>
+					<th>Rendu</th>
+					<td>https://rendu-git.etna-alternance.net/module-5324/activity-29015/group-684335</td>
+				</tr>
+				<tr>
+					<th>Fichiers à rendre</th>
+					<td>
+						<ul>
+							<li>/Makefile</li>
+							<li>/*.c</li>
+							<li>/*.h</li>
+							<li>libmy/*.c</li>
+							<li>libmy/Makefile</li>
+							<li>/Release/my_crd</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<th>Nom de l'executable</th>
+					<td>my_crd</td>
+				</tr>
+				<tr>
+					<th>Correction</th>
+					<td>Soutenance</td>
+				</tr>
+				<tr>
+					<th>Environnement</th>
+					<td>Debian 9.7</td>
+				</tr>
+				<tr>
+					<th>Effectif</th>
+					<td>Seul</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<div class="panel panel-objective">
+		<div class="panel-heading">Objectifs</div>
+		<div class="panel-body">
+			<table>
+				<tbody><tr>
+					<td>Maîtriser le C</td>
+				</tr>
+				<tr>
+					<td>Installer une machine virtuelle Debian 9 64bit</td>
+				</tr>
+				<tr>
+					<td>Installer un environnement de compilation (build-essential)</td>
+				</tr>
+				<tr>
+					<td>Proposer une solution technique à une problématique</td>
+				</tr>
+				<tr>
+					<td>Profiler et optimiser la rapidité de traitement d’une solution technique</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<div class="panel panel-warning">
+		<div class="panel-heading">Attention</div>
+		<div class="panel-body">
+			<ul>
+				<li>Votre dépôt doit contenir vos sources ainsi qu'un seul Makefile</li>
+				<li>Votre Makefile doit générer votre exécutable <code>my_crd</code> dans un répertoire <code>Release</code> à la racine de votre dépôt :<code>/Release/my_crd</code></li>
+				<li>Vous devez réaliser vos propres conteneurs (tableau, liste chaînées, structures, etc)</li>
+				<li>L'implémentation de quelconques librairies est interdite</li>
+				<li>Votre programme doit être dynamique, le nombre de commandes maximales à exécuter est indéterminé</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-project">
+		<div class="panel-heading">Consignes</div>
+		<div class="panel-body">
+			<p>Le projet my_crd est un projet d'optimisation, la tache à 
+effectuer est simple, mais il va falloir l'executer le plus rapidement 
+possible.</p>
+			<p>Le programme doit implémenter la totalité des opérations nécessaires pour exécuter les commandes qui lui sont passées :</p>
+			<ul>
+				<li>Ajouter une entrée</li>
+				<li>Supprimer une entrée</li>
+				<li>Rechercher une entrée</li>
+			</ul>
+			<p>Le programme ne prend aucun argument. Son fichier de commandes est
+ lu sur l'entrée standard. Les réponses sont fournies sur la sortie 
+standard. Vous n'avez pas à stocker les valeurs entre deux exécutions. 
+En fonction des commandes passées, les réponses diffèrent.</p>
+		</div>
+	</div>
+	<div class="panel panel-warning">
+		<div class="panel-heading">Informations</div>
+		<div class="panel-body">
+			<p>Fonctions autorisées :</p>
+			<ul>
+				<li>write</li>
+				<li>read</li>
+				<li>malloc</li>
+				<li>free</li>
+				<li>getline</li>
+			</ul>
+			<p>Vous pouvez aussi utiliser le code qui vous ai fourni dans le fichier <code>my_readline.c</code></p>
+		</div>
+	</div>
+	<div class="panel panel-exercice">
+		<div class="panel-heading">Commandes</div>
+		<div class="panel-body">
+			<h1>Commande de création :</h1>
+			<ul>
+				<li>si la clé existe, la valeur est mise à jour</li>
+				<li>si la clé n'existe pas, la paire clé/valeur est ajoutée</li>
+				<li>dans les deux cas, la clé est retournée</li>
+			</ul>
+			<h1>Commande de suppression</h1> :
+			<ul>
+				<li>si la clé existe, sa valeur est retournée</li>
+				<li>si la clé n'existe pas, -1 est retourné</li>
+			</ul>
+			<h1>Commande de recherche :</h1>
+			<ul>
+				<li>si la clé existe, sa valeur est retournée</li>
+				<li>si la clé n'existe pas, -1 est retourné</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-exercice">
+		<div class="panel-heading">Format des commandes</div>
+		<div class="panel-body">
+			<h1>Format d'une commande de création :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash"><span class="token operator">&lt;</span>clé<span class="token operator">&gt;</span><span class="token operator">&lt;</span>espace<span class="token operator">&gt;</span><span class="token operator">&lt;</span>valeur<span class="token operator">&gt;</span>\n</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+			<h1>Format d'une commande de suppression :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash"><span class="token operator">&lt;</span>clé<span class="token operator">&gt;</span><span class="token operator">&lt;</span>espace<span class="token operator">&gt;</span>D\n</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+			<h1>Format d'une commande de recherche :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash"><span class="token operator">&lt;</span>clé<span class="token operator">&gt;</span>\n</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+			<h1>Exemple de fichier de commande :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash">32
+32 D
+34 4
+34
+34 5
+34
+34 D
+34</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+			<h1>Sortie attendue :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash">-1
+-1
+34
+4
+34
+5
+5
+-1</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+			<h1>Exemple d'exécution complète :</h1>
+			<pre class="language-bash code-toolbar"><code class=" language-bash">$<span class="token operator">&gt;</span>./MyCrd <span class="token operator">&lt;</span> commande-test.lst
+-1
+-1
+34
+4
+34
+5
+5
+-1</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Moulinette de performance</div>
+		<div class="panel-body">
+			<p>Une moulinette compilera vos projets toutes les 6 heures et les 
+chronométrera lors de l’exécution de fichiers de commandes très 
+volumineux.</p>
+			<p>A la suite de quoi, un classement des performances de tout les projets sera publié.</p>
+			<p>Il vous faudra alors faire tout votre possible pour être le plus haut dans le classement.</p>
+			<p>Améliorez votre projet, jusqu’à devenir le plus rapide de la promotion.</p>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">Soutenance</div>
+		<div class="panel-body">
+			<p>La soutenance sera l'occasion pour vous de nous expliquer :</p>
+			<ul>
+				<li>le cheminement de vos différents tests pour obtenir le programme le plus rapide</li>
+				<li>votre organisation</li>		
+				<li>la méthode utilisée pour trouver les meilleurs optimisation à réaliser</li>
+				<li>vos conclusions sur les algorithmes qu'il est pertinent d'utiliser (ou pas) dans une telle situation.</li>
+			</ul>
+		</div>
+	</div>
+
+
+</body></html>
