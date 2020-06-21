@@ -22,6 +22,7 @@ void print_linked_list(struct linked_list* linked_list_start);
 void add_linked_list(struct linked_list* linked_list_start, char* key, char* value);
 struct linked_list* found_link(struct linked_list* linked_list_start, char* link_key);
 struct linked_list* shift_linked_list(struct linked_list* linked_list_start, char* key, char* value);
+void add_update_linked_list(struct linked_list* linked_list_start, char* key, char* value);
 void delete_link(struct linked_list* linked_list_start, char* link_key);
 // struct linked_list create_link(char* val);
 // void create_link(struct linked_list* new_link_address, char* val);
@@ -46,23 +47,32 @@ int main(int argc, char *argv[]) {
     linked_list_start.next_link = NULL;
 
     // add_linked_list(linked_list_start, "7");
-        // add_linked_list(&linked_list_start, "7", "97845");
-        // add_linked_list(&linked_list_start, "95", "484512");
-        // add_linked_list(&linked_list_start, "34", "478419");
-        // add_linked_list(&linked_list_start, "33", "477619");
-        // add_linked_list(&linked_list_start, "91", "66548");
+        add_linked_list(linked_list_first, "7", "97845");
+        add_linked_list(linked_list_first, "95", "484512");
+        add_linked_list(linked_list_first, "34", "478419");
+        add_linked_list(linked_list_first, "33", "477619");
+        add_linked_list(linked_list_first, "91", "66548");
 
     
-    linked_list_first = shift_linked_list(linked_list_first, "7", "97845");
-    linked_list_first = shift_linked_list(linked_list_first, "95", "484512");
-    linked_list_first = shift_linked_list(linked_list_first, "34", "478419");
-    linked_list_first = shift_linked_list(linked_list_first, "33", "477619");
-    linked_list_first = shift_linked_list(linked_list_first, "91", "66548");
+    // linked_list_first = shift_linked_list(linked_list_first, "7", "97845");
+    // linked_list_first = shift_linked_list(linked_list_first, "95", "484512");
+    // linked_list_first = shift_linked_list(linked_list_first, "34", "478419");
+    // linked_list_first = shift_linked_list(linked_list_first, "33", "477619");
+    // linked_list_first = shift_linked_list(linked_list_first, "91", "66548");
+
+        add_update_linked_list(linked_list_first, "7", "97845");
+        add_update_linked_list(linked_list_first, "95", "484512");
+        add_update_linked_list(linked_list_first, "34", "478419");
+        add_update_linked_list(linked_list_first, "33", "477619");
+        add_update_linked_list(linked_list_first, "91", "66548");
 
     // add_linked_list(linked_list_start, "25");
     // add_linked_list(linked_list_start, "37");
+    printf("printing list...\n");
     print_linked_list(linked_list_first);
+    add_update_linked_list(linked_list_first, "33", "477119");
     delete_link(linked_list_first, "95");
+    printf("printing list...\n");
     print_linked_list(linked_list_first);
     struct linked_list* search_result = found_link(linked_list_first, "95");
     if (search_result != NULL) {
@@ -276,6 +286,30 @@ void add_linked_list(struct linked_list* linked_list_start, char* key, char* val
 
 
     (*current_link).next_link = new_link;
+}
+
+void add_update_linked_list(struct linked_list* linked_list_start, char* key, char* value) {
+    struct linked_list* current_link = linked_list_start;
+    int found = 0;
+
+    while ((*current_link).next_link != NULL) {
+        current_link = (*current_link).next_link;
+        if ((*current_link).key == key) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found) {
+        (*current_link).value = value;
+    } else {
+        struct linked_list* new_link;
+        new_link = malloc(sizeof(*new_link));
+        (*new_link).key = key;
+        (*new_link).value = value;
+        (*new_link).next_link = NULL;
+        (*current_link).next_link = new_link;
+    }
 }
 
 struct linked_list* shift_linked_list(struct linked_list* linked_list_start, char* key, char* value) {
