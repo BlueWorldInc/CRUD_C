@@ -37,6 +37,9 @@ char *my_readline(void)
     do {
         read(0, tmp, 1);
         // printf("%c", tmp[0]);
+        if (tmp[0] == 0) {
+            return NULL;
+        }
         buff[i] = tmp[0];
         i++;
     } while (tmp[0] != 10);
