@@ -540,12 +540,12 @@ struct linked_list* found_link(struct linked_list* linked_list_start, char* link
         return NULL;
     }
 
-    if (strcmp((*current_link).key, link_key) == 0) {
+    if (my_strcmp((*current_link).key, link_key)) {
         return current_link;
     }
 
     while (current_link!= NULL) {
-        if (strcmp((*current_link).key, link_key) == 0) {
+        if (my_strcmp((*current_link).key, link_key)) {
             return current_link;
         }
         current_link = (*current_link).next_link;
